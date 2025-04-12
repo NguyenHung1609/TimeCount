@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,6 +8,7 @@
     android:background="#CC4461"
     tools:context=".MainActivity">
 
+    <!-- Tiêu đề -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
@@ -20,11 +20,10 @@
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintMarginStart="16dp"
-        app:layout_constraintMarginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Icon lửa -->
     <ImageButton
         android:id="@+id/fireIcon"
         android:layout_width="42dp"
@@ -33,12 +32,12 @@
         android:layout_marginEnd="4dp"
         android:background="@android:color/transparent"
         android:src="@drawable/fire"
-        app:layout_constraintEnd_toStartOf="@+id/btnAdd"
-        app:layout_constraintMarginEnd="16dp"
-        app:layout_constraintMarginTop="16dp"
+        android:contentDescription="Fire Icon"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnAdd"
         app:tint="@android:color/white" />
 
+    <!-- Nút thêm -->
     <ImageButton
         android:id="@+id/btnAdd"
         android:layout_width="42dp"
@@ -47,12 +46,12 @@
         android:layout_marginEnd="4dp"
         android:background="@android:color/transparent"
         android:src="@android:drawable/ic_input_add"
-        app:layout_constraintEnd_toStartOf="@id/btnSettings"
-        app:layout_constraintMarginEnd="16dp"
-        app:layout_constraintMarginTop="16dp"
+        android:contentDescription="Add Button"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnSettings"
         app:tint="@android:color/white" />
 
+    <!-- Nút cài đặt -->
     <ImageButton
         android:id="@+id/btnSettings"
         android:layout_width="41dp"
@@ -61,53 +60,26 @@
         android:layout_marginEnd="36dp"
         android:background="@android:color/transparent"
         android:src="@android:drawable/ic_menu_preferences"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintMarginEnd="16dp"
-        app:layout_constraintMarginTop="16dp"
+        android:contentDescription="Settings Button"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:tint="@android:color/white" />
+
     <!-- Thẻ đếm ngày -->
     <RelativeLayout
-        android:layout_width="315dp"
-        android:layout_height="113dp"
+        android:id="@+id/dateCard"
+        android:layout_width="356dp"
+        android:layout_height="115dp"
         android:layout_marginTop="72dp"
-        android:background="@drawable/bg_card"
+        android:background="@drawable/bg_sample"
         android:clipToOutline="true"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-        app:layout_constraintVertical_bias="0.0">
-
-        <!-- Ảnh nền -->
-
-        <!-- Trái tim và số ở giữa -->
+        app:layout_constraintTop_toBottomOf="@id/tvTitle">
 
         <!-- Chữ H bên trái -->
-        <LinearLayout
-            android:layout_width="312dp"
-            android:layout_height="111dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:background="@drawable/bg_sample">
-
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/ic_heart" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/ic_heart"
-                android:text="12"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
         <TextView
+            android:id="@+id/letterH"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -120,6 +92,7 @@
 
         <!-- Chữ N bên phải -->
         <TextView
+            android:id="@+id/letterN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -130,6 +103,30 @@
             android:textColor="#000000"
             android:textSize="35sp" />
 
+        <!-- Icon + số ngày ở giữa -->
+        <LinearLayout
+            android:id="@+id/centerLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:contentDescription="Heart Icon"
+                android:src="@drawable/ic_heart" />
+
+            <TextView
+                android:id="@+id/tvDays"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

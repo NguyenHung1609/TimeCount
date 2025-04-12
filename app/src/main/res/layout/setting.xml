@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1E3A5F"
-    >
+    android:background="#1E3A5F">
 
+    <!-- Tiêu đề -->
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
@@ -19,38 +19,34 @@
         android:fontFamily="@font/comfortaa_font"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintMarginStart="16dp"
-        app:layout_constraintMarginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Nút đóng -->
     <ImageButton
         android:id="@+id/closeIcon"
         android:layout_width="42dp"
         android:layout_height="42dp"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginEnd="16dp"
         android:background="@android:color/transparent"
         android:src="@drawable/close"
+        android:contentDescription="Đóng"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintMarginEnd="16dp"
-        app:layout_constraintMarginTop="16dp"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@android:color/white" />
 
+    <!-- Ngôn ngữ -->
     <TextView
         android:id="@+id/languageText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:text="Ngôn ngữ"
         android:textColor="@android:color/white"
         android:fontFamily="@font/comfortaa_font"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/languageValue"
-        app:layout_constraintHorizontal_bias="0.158"
-        app:layout_constraintMarginStart="16dp"
-        app:layout_constraintMarginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleText" />
 
@@ -58,74 +54,68 @@
         android:id="@+id/languageValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="44dp"
-        android:fontFamily="@font/comfortaa_font"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="32dp"
         android:text="Tiếng Việt >"
         android:textColor="@android:color/white"
+        android:fontFamily="@font/comfortaa_font"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintMarginEnd="16dp"
-        app:layout_constraintMarginTop="32dp"
         app:layout_constraintTop_toBottomOf="@id/titleText" />
 
+    <!-- Máy tính ngày -->
     <TextView
         android:id="@+id/dateCalculator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
         android:text="Máy tính ngày"
         android:textColor="@android:color/white"
         android:fontFamily="@font/comfortaa_font"
         android:textSize="16sp"
-        app:layout_constraintMarginStart="16dp"
-        app:layout_constraintMarginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/languageText" />
 
+    <!-- Chỉnh sửa -->
     <TextView
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
         android:text="Chỉnh sửa >"
         android:textColor="@android:color/white"
         android:fontFamily="@font/comfortaa_font"
         android:textSize="16sp"
-        app:layout_constraintMarginStart="16dp"
-        app:layout_constraintMarginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dateCalculator" />
 
+    <!-- Sao lưu và khôi phục -->
     <TextView
         android:id="@+id/backupText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
         android:text="Sao lưu và khôi phục"
         android:textColor="@android:color/white"
         android:fontFamily="@font/comfortaa_font"
         android:textSize="16sp"
-        app:layout_constraintMarginStart="16dp"
-        app:layout_constraintMarginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editText" />
 
+    <!-- Hướng dẫn sử dụng -->
     <TextView
         android:id="@+id/helpText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
         android:text="Hướng dẫn sử dụng"
         android:textColor="@android:color/white"
         android:fontFamily="@font/comfortaa_font"
         android:textSize="16sp"
-        app:layout_constraintMarginStart="16dp"
-        app:layout_constraintMarginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/backupText" />
 

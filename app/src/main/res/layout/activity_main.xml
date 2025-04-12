@@ -19,8 +19,6 @@
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintMarginStart="16dp"
-        app:layout_constraintMarginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,11 +30,8 @@
         android:layout_marginEnd="4dp"
         android:background="@android:color/transparent"
         android:src="@drawable/fire"
-        app:layout_constraintEnd_toStartOf="@+id/btnAdd"
-        app:layout_constraintMarginEnd="16dp"
-        app:layout_constraintMarginTop="16dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@android:color/white" />
+        app:layout_constraintEnd_toStartOf="@+id/btnAdd" />
 
     <ImageButton
         android:id="@+id/btnAdd"
@@ -46,11 +41,8 @@
         android:layout_marginEnd="4dp"
         android:background="@android:color/transparent"
         android:src="@android:drawable/ic_input_add"
-        app:layout_constraintEnd_toStartOf="@id/btnSettings"
-        app:layout_constraintMarginEnd="16dp"
-        app:layout_constraintMarginTop="16dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@android:color/white" />
+        app:layout_constraintEnd_toStartOf="@id/btnSettings" />
 
     <ImageButton
         android:id="@+id/btnSettings"
@@ -60,13 +52,11 @@
         android:layout_marginEnd="36dp"
         android:background="@android:color/transparent"
         android:src="@android:drawable/ic_menu_preferences"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintMarginEnd="16dp"
-        app:layout_constraintMarginTop="16dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@android:color/white" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 

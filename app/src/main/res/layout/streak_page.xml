@@ -48,7 +48,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="space-between"
         android:layout_marginBottom="32dp">
 
         <!-- Mỗi ngày là một LinearLayout (icon + text) -->
