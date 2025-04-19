@@ -11,6 +11,7 @@
         android:orientation="vertical">
 
         <!-- Thanh tiêu đề -->
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,8 +43,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa_font"
             android:text="Tính chênh lệch giữa hai ngày"
+            android:textStyle="bold"
             android:textColor="@android:color/white"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:layout_marginBottom="8dp" />
 
         <LinearLayout
@@ -66,14 +68,18 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/comfortaa_font"
                 android:text="Ngày bắt đầu"
+                android:textStyle="bold"
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
-            <Spinner
-                android:id="@+id/startDateSpinner"
+            <TextView
+                android:id="@+id/startDateText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp" />
+                android:fontFamily="@font/comfortaa_font"
+                android:padding="8dp"
+                android:text="Chọn ngày bắt đầu"
+                android:textColor="#000000" />
 
             <!-- Ngày kết thúc -->
             <TextView
@@ -81,14 +87,18 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/comfortaa_font"
                 android:text="Ngày kết thúc"
+                android:textStyle="bold"
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
-            <Spinner
-                android:id="@+id/endDateSpinner"
+            <TextView
+                android:id="@+id/endDateText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp" />
+                android:padding="8dp"
+                android:text="Chọn ngày kết thúc"
+                android:fontFamily="@font/comfortaa_font"
+                android:textColor="#000000" />
 
             <!-- Tổng số ngày -->
             <TextView
@@ -96,15 +106,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/comfortaa_font"
-                android:text="Tổng 0 ngày"
+                android:text="Tổng chênh lệch là: 0 ngày"
                 android:textStyle="bold"
+                android:textSize="16dp"
                 android:textColor="#000000"
-                android:layout_marginBottom="8dp" />
+                android:layout_margin="12dp" />
 
             <!-- Checkbox bao gồm ngày bắt đầu -->
-            <RadioButton
+            <CheckBox
                 android:id="@+id/includeStartDate"
-                android:layout_width="wrap_content"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/comfortaa_font"
                 android:text="Bao gồm ngày bắt đầu (+1 ngày)"
@@ -116,9 +127,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa_font"
+            android:textStyle="bold"
             android:text="Đếm ngày"
             android:textColor="@android:color/white"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:layout_marginBottom="8dp" />
 
         <LinearLayout
@@ -136,14 +148,18 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/comfortaa_font"
                 android:text="Ngày bắt đầu"
+                android:textStyle="bold"
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
-            <Spinner
-                android:id="@+id/countStartDateSpinner"
+            <TextView
+                android:id="@+id/startDateText2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp" />
+                android:fontFamily="@font/comfortaa_font"
+                android:padding="8dp"
+                android:text="Chọn ngày bắt đầu"
+                android:textColor="#000000" />
 
             <!-- Nhập số -->
             <LinearLayout
@@ -158,7 +174,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Nhập số"
+                    android:hint="Nhập số muốn thêm"
                     android:inputType="number"
                     android:background="@android:drawable/editbox_background" />
 
@@ -171,22 +187,37 @@
 
             <!-- Ngày sau/trước -->
             <TextView
-                android:id="@+id/afterDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/comfortaa_font"
-                android:text="Sau Thứ 6 04/04/2025"
-                android:textColor="#000000"
-                android:layout_marginBottom="4dp" />
-
-            <TextView
                 android:id="@+id/beforeDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/comfortaa_font"
-                android:text="Trước Thứ 6 04/04/2025"
-                android:textColor="#000000" />
+                android:text="Ngày đã nhập: "
+                android:textColor="#000000"
+                android:layout_marginBottom="12dp"
+                />
+
+            <TextView
+                android:id="@+id/afterDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/comfortaa_font"
+                android:text="Ngày sau khi tính toán: "
+                android:textColor="#000000"
+                android:layout_marginBottom="4dp" />
+
         </LinearLayout>
+
+        <Button
+            android:id="@+id/calculateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/comfortaa_font"
+            android:text="Cập nhật lại"
+            android:textColor="#1E3A5F"
+            android:backgroundTint="#FFF"/>
 
     </LinearLayout>
 </ScrollView>
