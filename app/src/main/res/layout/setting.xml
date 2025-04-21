@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
-        android:text="Chỉnh sửa >"
+        android:text="Chỉnh màu giao diện >"
         android:textColor="@android:color/white"
         android:fontFamily="@font/comfortaa_font"
         android:textSize="16sp"
@@ -104,19 +104,5 @@
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editText" />
-
-    <!-- Hướng dẫn sử dụng -->
-    <TextView
-        android:id="@+id/helpText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:text="Hướng dẫn sử dụng"
-        android:textColor="@android:color/white"
-        android:fontFamily="@font/comfortaa_font"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/backupText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

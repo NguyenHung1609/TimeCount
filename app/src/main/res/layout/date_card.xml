@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="115dp"
+    android:background="@drawable/bg_sample"
+    android:clipToOutline="true"
+    android:layout_marginTop="12dp">
+
+    <TextView
+        android:id="@+id/letterH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="16dp"
+        android:text="H"
+        android:textSize="35sp"
+        android:textColor="@android:color/black"
+        android:fontFamily="@font/comfortaa_font" />
+
+    <TextView
+        android:id="@+id/letterN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="16dp"
+        android:text="N"
+        android:textSize="35sp"
+        android:textColor="@android:color/black"
+        android:fontFamily="@font/comfortaa_font" />
+
+    <LinearLayout
+        android:id="@+id/centerLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_heart"
+            android:contentDescription="Heart Icon" />
+
+        <TextView
+            android:id="@+id/tvDays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="365"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+</RelativeLayout>

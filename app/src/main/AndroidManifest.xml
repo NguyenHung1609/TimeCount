@@ -31,6 +31,7 @@
         <activity android:name=".LanguageSettingActivity" />
         <activity android:name=".CustomSettingActivity" />
         <activity android:name=".DayCalculatorActivity" />
+        <activity android:name=".AddEventSecondModeActivity" />
 
     </application>
 

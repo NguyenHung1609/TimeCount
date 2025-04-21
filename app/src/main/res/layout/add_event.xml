@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -86,7 +85,9 @@
         android:layout_height="50dp"
         android:layout_marginTop="68dp"
         android:background="@android:drawable/edit_text"
+        android:clickable="true"
         android:drawableEnd="@android:drawable/ic_menu_more"
+        android:focusable="false"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.586"
@@ -100,6 +101,8 @@
         android:layout_marginTop="60dp"
         android:background="@android:drawable/edit_text"
         android:drawableEnd="@android:drawable/ic_menu_more"
+        android:focusable="false"
+        android:clickable="true"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.586"
@@ -124,6 +127,8 @@
         android:layout_height="38dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/comfortaa_font"
+        android:clickable="false"
+        android:focusable="false"
         android:text="Đếm ngược"
         android:textColor="@android:color/white"
         android:textSize="20dp"
@@ -136,14 +141,13 @@
         android:id="@+id/btnAddEvent"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:background="@android:color/black"
         android:fontFamily="@font/comfortaa_font"
         android:text="Thêm mới"
         android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switchCountdown" />
+        android:layout_marginBottom="32dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,7 +35,7 @@
     <LinearLayout
         android:id="@+id/edit_options_container"
         android:layout_width="335dp"
-        android:layout_height="103dp"
+        android:layout_height="60dp"
         android:layout_below="@id/title"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -73,36 +73,6 @@
                 android:backgroundTint="#1E3A5F" />
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#000000" />
-        <!-- Dòng 2: Hình nền -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingVertical="8dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/comfortaa_font"
-                android:text="Hình nền"
-                android:textColor="#000000"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/comfortaa_font"
-                android:paddingRight="4dp"
-                android:text=">"
-                android:textColor="#000000"
-                android:textSize="18sp" />
-        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

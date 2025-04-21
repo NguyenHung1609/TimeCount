@@ -7,9 +7,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.*;
-
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,34 +15,38 @@ import androidx.core.app.ActivityCompat;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
-public class AddEventActivity extends AppCompatActivity {
+public class AddEventSecondModeActivity extends AppCompatActivity {
 
-    private static final int REQUEST_CODE_IMAGE_PICK = 101;
-    private static final int REQUEST_CODE_PERMISSION = 100;
+    private static final int REQUEST_CODE_IMAGE_PICK = 102;
+    private static final int REQUEST_CODE_PERMISSION = 103;
 
+    private EditText etTitle, etDateType, etDate, name1, name2;
     private FrameLayout imageContainer;
     private ImageView imageView;
     private Uri selectedImageUri = null;
-
-    private EditText etTitle, etDate, etDateType;
-    private Switch switchCountdown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.add_event);
+        setContentView(R.layout.add_event_second_mode);
+
+        etTitle = findViewById(R.id.etTitle);
+        etDateType = findViewById(R.id.etDateType);
+        etDate = findViewById(R.id.etDate);
+        name1 = findViewById(R.id.name1);
+        name2 = findViewById(R.id.name2);
+
+        etDateType.setText("Hẹn hò");
+        etDateType.setFocusable(false);
+        etDateType.setOnClickListener(v -> showDateTypeDialog());
+
+        etDate.setOnClickListener(v -> showDatePicker());
 
         imageContainer = findViewById(R.id.imageContainer);
         imageView = new ImageView(this);
-        imageView.setLayoutParams(new FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.MATCH_PARENT
-        ));
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageContainer.addView(imageView);
 
@@ -53,42 +55,27 @@ public class AddEventActivity extends AppCompatActivity {
             else requestImagePermission();
         });
 
-        etTitle = findViewById(R.id.etTitle);
-        etDate = findViewById(R.id.etDate);
-        etDateType = findViewById(R.id.etDateType);
-        switchCountdown = findViewById(R.id.switchCountdown);
-
-        etDateType.setText("Bình thường");
-        etDateType.setFocusable(false);
-        etDateType.setOnClickListener(v -> showDateTypeDialog(etDateType));
-
-        etDate.setOnClickListener(v -> showDatePickerDialog());
-
         Button btnAdd = findViewById(R.id.btnAddEvent);
         btnAdd.setOnClickListener(v -> saveEvent());
     }
 
-    private void showDatePickerDialog() {
+    private void showDatePicker() {
         Calendar calendar = Calendar.getInstance();
-        new DatePickerDialog(this, (view, year, month, dayOfMonth) -> {
-            String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
-            etDate.setText(selectedDate);
-
-            Calendar selectedCalendar = Calendar.getInstance();
-            selectedCalendar.set(year, month, dayOfMonth);
-            Calendar today = Calendar.getInstance();
-            switchCountdown.setChecked(selectedCalendar.after(today));
-
+        new DatePickerDialog(this, (view, y, m, d) -> {
+            String dateStr = d + "/" + (m + 1) + "/" + y;
+            etDate.setText(dateStr);
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
     private void saveEvent() {
         String title = etTitle.getText().toString().trim();
         String date = etDate.getText().toString().trim();
-        String dateType = etDateType.getText().toString().trim();
+        String type = etDateType.getText().toString().trim();
+        String person1 = name1.getText().toString().trim();
+        String person2 = name2.getText().toString().trim();
         String imageUriStr = (selectedImageUri != null) ? selectedImageUri.toString() : "";
 
-        if (title.isEmpty() || date.isEmpty()) {
+        if (title.isEmpty() || date.isEmpty() || person1.isEmpty() || person2.isEmpty()) {
             Toast.makeText(this, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -96,36 +83,40 @@ public class AddEventActivity extends AppCompatActivity {
         long millis = 0;
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-            Date dateObj = sdf.parse(date);
-            if (dateObj != null) millis = dateObj.getTime();
+            Date d = sdf.parse(date);
+            if (d != null) millis = d.getTime();
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        Event event = new Event(title, date, dateType, imageUriStr, millis);
+        // Tên sự kiện hiển thị tên người dùng
+        String displayTitle = person1 + " ❤ " + person2;
+        Event event = new Event(displayTitle, date, type, imageUriStr, millis);
+
         EventDatabaseHelper dbHelper = new EventDatabaseHelper(this);
         dbHelper.insertEvent(event);
+
         Toast.makeText(this, "Đã lưu sự kiện!", Toast.LENGTH_SHORT).show();
+
+        // Quay về màn hình chính sau khi thêm
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
         finish();
     }
 
-    private void showDateTypeDialog(EditText etDateType) {
+    private void showDateTypeDialog() {
         final String[] options = {"Bình thường", "Hẹn hò"};
         new androidx.appcompat.app.AlertDialog.Builder(this)
                 .setTitle("Chọn kiểu ngày")
                 .setItems(options, (dialog, which) -> {
                     etDateType.setText(options[which]);
-                    if (which == 1) {
-                        startActivity(new Intent(this, AddEventSecondModeActivity.class));
+                    if (which == 0) {
+                        startActivity(new Intent(this, AddEventActivity.class));
+                        finish();
                     }
                 })
                 .show();
-    }
-
-    private void openGallery() {
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
-        startActivityForResult(intent, REQUEST_CODE_IMAGE_PICK);
     }
 
     private boolean hasImagePermission() {
@@ -144,12 +135,20 @@ public class AddEventActivity extends AppCompatActivity {
         }
     }
 
+    private void openGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, REQUEST_CODE_IMAGE_PICK);
+    }
+
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_IMAGE_PICK && resultCode == RESULT_OK && data != null) {
+    protected void onActivityResult(int req, int result, Intent data) {
+        super.onActivityResult(req, result, data);
+        if (req == REQUEST_CODE_IMAGE_PICK && result == RESULT_OK && data != null) {
             selectedImageUri = data.getData();
-            if (selectedImageUri != null) imageView.setImageURI(selectedImageUri);
+            if (selectedImageUri != null) {
+                imageView.setImageURI(selectedImageUri);
+            }
         }
     }
 }

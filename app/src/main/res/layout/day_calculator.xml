@@ -216,8 +216,7 @@
             android:textStyle="bold"
             android:fontFamily="@font/comfortaa_font"
             android:text="Cập nhật lại"
-            android:textColor="#1E3A5F"
-            android:backgroundTint="#FFF"/>
+            android:textColor="#FFF" />
 
     </LinearLayout>
 </ScrollView>
