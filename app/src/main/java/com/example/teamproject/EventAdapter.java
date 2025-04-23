@@ -55,13 +55,13 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             long daysTogethers = daysTogether;
             if (daysTogethers < 0) daysTogethers *= -1;
             if (daysTogether < 0) {
-                loveHolder.tvDays.setText(String.valueOf(daysTogethers) + " ngày ❤");
-                loveHolder.tvDays.setTextColor(context.getResources().getColor(R.color.pink));
+                loveHolder.tvDays.setText(String.valueOf(daysTogethers) + " ngày nữa");
             } else if (daysTogether == 0) {
                 loveHolder.tvDays.setText("Hôm nay ❤");
                 loveHolder.tvDays.setTextColor(context.getResources().getColor(R.color.pink));
             } else {
-                loveHolder.tvDays.setText(String.valueOf(daysTogethers) + " ngày nữa");
+                loveHolder.tvDays.setText(String.valueOf(daysTogethers) + " ngày ❤");
+                loveHolder.tvDays.setTextColor(context.getResources().getColor(R.color.pink));
             }
 
             String[] parts = event.getTitle().split(" ❤ ");
