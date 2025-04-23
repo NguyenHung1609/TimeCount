@@ -52,7 +52,17 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         if (holder instanceof LoveEventViewHolder) {
             LoveEventViewHolder loveHolder = (LoveEventViewHolder) holder;
             long daysTogether = (System.currentTimeMillis() - event.getEventTimeMillis()) / (1000 * 60 * 60 * 24);
-            loveHolder.tvDays.setText(String.valueOf(daysTogether));
+            long daysTogethers = daysTogether;
+            if (daysTogethers < 0) daysTogethers *= -1;
+            if (daysTogether < 0) {
+                loveHolder.tvDays.setText(String.valueOf(daysTogethers) + " ngày ❤");
+                loveHolder.tvDays.setTextColor(context.getResources().getColor(R.color.pink));
+            } else if (daysTogether == 0) {
+                loveHolder.tvDays.setText("Hôm nay ❤");
+                loveHolder.tvDays.setTextColor(context.getResources().getColor(R.color.pink));
+            } else {
+                loveHolder.tvDays.setText(String.valueOf(daysTogethers) + " ngày nữa");
+            }
 
             String[] parts = event.getTitle().split(" ❤ ");
             loveHolder.tvNameLeft.setText(parts.length > 0 ? parts[0] : "H");

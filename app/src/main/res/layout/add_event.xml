@@ -7,7 +7,7 @@
     android:background="#1E3A5F"
     tools:context=".MainActivity">
 
-    <EditText
+    <TextView
         android:id="@+id/DateTypeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,12 +37,14 @@
 
     <FrameLayout
         android:id="@+id/imageContainer"
-        android:layout_width="353dp"
+        android:layout_width="0dp"
         android:layout_height="120dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:background="#D3D3D3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintHorizontal_bias="0.586"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle">
 
@@ -53,7 +55,8 @@
             android:src="@android:drawable/ic_menu_camera" />
     </FrameLayout>
 
-    <EditText
+
+<TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/comfortaa_font"
@@ -66,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageContainer"
         app:layout_constraintVertical_bias="0.466" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/comfortaa_font"
@@ -81,9 +84,11 @@
 
     <EditText
         android:id="@+id/etDateType"
-        android:layout_width="353dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:background="@android:drawable/edit_text"
         android:clickable="true"
         android:drawableEnd="@android:drawable/ic_menu_more"
@@ -96,9 +101,11 @@
 
     <EditText
         android:id="@+id/etDate"
-        android:layout_width="353dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:background="@android:drawable/edit_text"
         android:drawableEnd="@android:drawable/ic_menu_more"
         android:focusable="false"
@@ -111,9 +118,11 @@
 
     <EditText
         android:id="@+id/etTitle"
-        android:layout_width="353dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:background="@android:drawable/edit_text"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -148,6 +157,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="32dp"/>
+        android:layout_marginBottom="32dp"
+        app:layout_constraintCircleRadius="30dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -66,6 +66,6 @@ public class Event {
 
         if (days > 0) return days + " ngày nữa";
         else if (days == 0) return "Hôm nay";
-        else return "Đã qua";
+        else return days*(-1) + " ngày trước";
     }
 }
