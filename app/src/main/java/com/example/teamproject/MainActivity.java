@@ -16,6 +16,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     ImageButton btnAdd;
     ImageButton btnSettings;
+    ImageButton fireIcon;
 
     private RecyclerView recyclerView;
     private EventAdapter adapter;
@@ -26,6 +27,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+
+        // Nút Fire
+        fireIcon = findViewById(R.id.fireIcon);
+        fireIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, DayCalculatorActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Nút sự kiện
         btnAdd = findViewById(R.id.btnAdd);
