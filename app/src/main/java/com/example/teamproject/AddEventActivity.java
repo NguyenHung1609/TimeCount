@@ -154,7 +154,7 @@ public class AddEventActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_IMAGE_PICK && resultCode == RESULT_OK && data != null) {
             Uri uri = data.getData();
-            // giữ permission để dùng lâu dài
+
             final int takeFlags = data.getFlags()
                     & (Intent.FLAG_GRANT_READ_URI_PERMISSION
                     | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);

@@ -7,203 +7,171 @@
     android:background="#CC4461"
     tools:context=".MainActivity">
 
-    <!-- Tiêu đề -->
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/comfortaa_font"
-        android:text="Sự kiện mới"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
+    <!-- ScrollView để bọc toàn bộ nội dung có thể cuộn -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddEvent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <!-- Ảnh -->
-    <FrameLayout
-        android:id="@+id/imageContainer"
-        android:layout_width="0dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="#D3D3D3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle">
-
-        <ImageView
-            android:layout_width="wrap_content"
+        <!-- LinearLayout bên trong ScrollView để chứa tất cả các phần tử cần cuộn -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@android:drawable/ic_menu_camera" />
-    </FrameLayout>
+            android:orientation="vertical">
 
-    <!-- Tên sự kiện -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/comfortaa_font"
-        android:text="Tên sự kiện"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageContainer" />
+            <!-- Tiêu đề -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="36dp"
+                android:fontFamily="@font/comfortaa_font"
+                android:text="Sự kiện mới"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
-    <!-- Kiểu ngày -->
+            <!-- Ảnh -->
+            <FrameLayout
+                android:id="@+id/imageContainer"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="#D3D3D3">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@android:drawable/ic_menu_camera" />
+            </FrameLayout>
 
-    <EditText
-        android:id="@+id/etTitle"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@android:drawable/edit_text"
-        android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageContainer" />
+            <!-- Tên sự kiện -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/comfortaa_font"
+                android:text="Tên sự kiện"
+                android:textColor="@color/white"/>
 
-    <TextView
-        android:id="@+id/dateTypeTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/comfortaa_font"
-        android:text="Kiểu ngày"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etTitle" />
+            <!-- Kiểu ngày -->
+            <EditText
+                android:id="@+id/etTitle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@android:drawable/edit_text"
+                android:padding="8dp"/>
 
-    <EditText
-        android:id="@+id/etDateType"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@android:drawable/edit_text"
-        android:drawableEnd="@android:drawable/ic_menu_more"
-        android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dateTypeTitle" />
+            <TextView
+                android:id="@+id/dateTypeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/comfortaa_font"
+                android:text="Kiểu ngày"
+                android:textColor="@color/white"/>
 
-    <!-- Chọn ngày -->
+            <EditText
+                android:id="@+id/etDateType"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@android:drawable/edit_text"
+                android:drawableEnd="@android:drawable/ic_menu_more"
+                android:padding="8dp"/>
 
-    <!-- Tên mình -->
+            <!-- Chọn ngày -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/comfortaa_font"
+                android:text="Chọn ngày"
+                android:textColor="@color/white"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/comfortaa_font"
-        android:text="Chọn ngày"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etDateType" />
+            <EditText
+                android:id="@+id/etDate"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@android:drawable/edit_text"
+                android:drawableEnd="@android:drawable/ic_menu_more"
+                android:focusable="false"
+                android:clickable="true"
+                android:padding="8dp"/>
 
-    <EditText
-        android:id="@+id/etDate"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@android:drawable/edit_text"
-        android:drawableEnd="@android:drawable/ic_menu_more"
-        android:padding="8dp"
-        android:focusable="false"
-        android:clickable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etDateType" />
+            <!-- Tên mình -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/comfortaa_font"
+                android:text="Nhập tên mình"
+                android:textColor="@color/white"/>
 
-    <!-- Tên nửa kia -->
+            <EditText
+                android:id="@+id/name1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@android:drawable/edit_text"
+                android:padding="8dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/comfortaa_font"
-        android:text="Nhập tên mình"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etDate" />
+            <!-- Tên nửa kia -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/comfortaa_font"
+                android:text="Nhập tên nửa kia"
+                android:textColor="@color/white" />
 
-    <EditText
-        android:id="@+id/name1"
-        android:layout_width="353dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@android:drawable/edit_text"
-        android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etDate" />
+            <EditText
+                android:id="@+id/name2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
+                android:background="@android:drawable/edit_text"
+                android:padding="8dp"/>
 
-    <!-- Đếm ngược -->
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/comfortaa_font"
-        android:text="Nhập tên nửa kia"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name1" />
-
-    <EditText
-        android:id="@+id/name2"
-        android:layout_width="353dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@android:drawable/edit_text"
-        android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name1" />
+        </LinearLayout>
+    </ScrollView>
 
     <!-- Nút thêm mới -->
-<!--    <Switch-->
-<!--        android:id="@+id/switchCountdown"-->
-<!--        android:layout_width="390dp"-->
-<!--        android:layout_height="35dp"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:fontFamily="@font/comfortaa_font"-->
-<!--        android:text="Đếm ngược"-->
-<!--        android:textColor="@android:color/white"-->
-<!--        android:textSize="17sp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.761"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/name2" />-->
-
     <Button
         android:id="@+id/btnAddEvent"
         android:layout_width="310dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginBottom="32dp"
         android:background="@android:color/black"
         android:fontFamily="@font/comfortaa_font"
         android:text="Thêm mới"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="32dp"/>
-
+        app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
