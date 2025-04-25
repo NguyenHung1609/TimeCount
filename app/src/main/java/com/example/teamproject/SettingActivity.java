@@ -62,13 +62,13 @@ public class SettingActivity extends AppCompatActivity {
         });
 
         // Nút Chỉnh sửa
-        editText = findViewById(R.id.editText);
-        editText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SettingActivity.this, CustomSettingActivity.class);
-                startActivity(intent);
-            }
-        });
+//        editText = findViewById(R.id.editText);
+//        editText.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(SettingActivity.this, CustomSettingActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 }

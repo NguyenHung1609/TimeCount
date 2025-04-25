@@ -48,25 +48,35 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         Event event = eventList.get(position);
+        String uriStr = event.getImageUri();
+        Uri imageUri = (uriStr != null && !uriStr.isEmpty()) ? Uri.parse(uriStr) : null;
 
         if (holder instanceof LoveEventViewHolder) {
             LoveEventViewHolder loveHolder = (LoveEventViewHolder) holder;
-            long daysTogether = (System.currentTimeMillis() - event.getEventTimeMillis()) / (1000 * 60 * 60 * 24);
-            long daysTogethers = daysTogether;
-            if (daysTogethers < 0) daysTogethers *= -1;
-            if (daysTogether < 0) {
-                loveHolder.tvDays.setText(String.valueOf(daysTogethers) + " ngày nữa");
-            } else if (daysTogether == 0) {
-                loveHolder.tvDays.setText("Hôm nay ❤");
-                loveHolder.tvDays.setTextColor(context.getResources().getColor(R.color.pink));
-            } else {
-                loveHolder.tvDays.setText(String.valueOf(daysTogethers) + " ngày ❤");
-                loveHolder.tvDays.setTextColor(context.getResources().getColor(R.color.pink));
-            }
 
+            loveHolder.eventImage.setImageURI(imageUri);
+
+            // Tách tên hai người từ title
             String[] parts = event.getTitle().split(" ❤ ");
-            loveHolder.tvNameLeft.setText(parts.length > 0 ? parts[0] : "H");
-            loveHolder.tvNameRight.setText(parts.length > 1 ? parts[1] : "N");
+            loveHolder.tvNameLeft.setText(parts.length > 0 ? parts[0] : "");
+            loveHolder.tvNameRight.setText(parts.length > 1 ? parts[1] : "");
+
+            // Tính số ngày
+            long diffMillis = event.getEventTimeMillis() - System.currentTimeMillis();
+            long days = Math.abs(diffMillis) / (1000L * 60 * 60 * 24);
+
+            if (diffMillis > 0) {
+                loveHolder.tvDays.setText(days + " ngày nữa");
+                loveHolder.tvDays.setTextColor(context.getResources().getColor(R.color.white));
+            } else if (diffMillis == 0) {
+                loveHolder.tvDays.setText("Hôm nay ❤");
+                loveHolder.tvDays.setTextColor(context.getResources().getColor(R.color.white));
+//                loveHolder.tvDays.setTextColor(context.getResources().getColor(R.color.pink));
+            } else {
+                loveHolder.tvDays.setText(days + " ngày ❤");
+                loveHolder.tvDays.setTextColor(context.getResources().getColor(R.color.white));
+//                loveHolder.tvDays.setTextColor(context.getResources().getColor(R.color.pink));
+            }
 
             loveHolder.itemView.setOnLongClickListener(v -> {
                 showDeleteDialog(event, position);
@@ -75,11 +85,11 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         } else if (holder instanceof EventViewHolder) {
             EventViewHolder normalHolder = (EventViewHolder) holder;
+
             normalHolder.tvTitle.setText(event.getTitle());
             normalHolder.tvCountdown.setText(event.getCountdownText());
-            if (event.getImageUri() != null) {
-                normalHolder.eventImage.setImageURI(Uri.parse(event.getImageUri()));
-            }
+
+            normalHolder.eventImage.setImageURI(imageUri);
 
             normalHolder.itemView.setOnLongClickListener(v -> {
                 showDeleteDialog(event, position);
@@ -87,6 +97,7 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             });
         }
     }
+
 
     @Override
     public int getItemCount() {
@@ -118,14 +129,17 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     //Show SK
     public static class LoveEventViewHolder extends RecyclerView.ViewHolder {
         TextView tvDays, tvNameLeft, tvNameRight;
+        ImageView eventImage;
 
         public LoveEventViewHolder(View itemView) {
             super(itemView);
+            eventImage  = itemView.findViewById(R.id.eventImage);
             tvDays = itemView.findViewById(R.id.tvDays);
             tvNameLeft = itemView.findViewById(R.id.letterH);
             tvNameRight = itemView.findViewById(R.id.letterN);
         }
     }
+
 
     // Xóa SK
     private void showDeleteDialog(Event event, int position) {
